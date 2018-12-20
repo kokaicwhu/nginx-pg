@@ -1,9 +1,11 @@
 FROM openresty/openresty
 
-WORKDIR /usr/local/openresty/nginx
+WORKDIR /usr/local/openresty
 
-COPY nginx.conf conf/nginx.conf
+COPY modules lualib/modules
+
+COPY nginx.conf nginx/conf/nginx.conf 
 
 RUN opm get SkyLothar/lua-resty-jwt
 
-RUN rm -f logs/*
+RUN rm -f nginx/logs/*
